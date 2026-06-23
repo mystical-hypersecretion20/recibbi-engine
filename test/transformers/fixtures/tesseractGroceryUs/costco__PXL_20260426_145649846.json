@@ -1,0 +1,128 @@
+{
+  "transformer": "tesseractGroceryUs",
+  "name": "costco/PXL_20260426_145649846.jpg",
+  "note": "Real Tesseract parse of this sample (see analysis/). expected = current transformer output; regenerate with generate-fixtures.js.",
+  "input": {
+    "store": null,
+    "items": [],
+    "totals": {
+      "subtotal": null,
+      "tax": null,
+      "total": null,
+      "itemCount": 0,
+      "sumOfItems": 0,
+      "subtotalMatch": null
+    }
+  },
+  "groundTruth": {
+    "store": {
+      "name": "Costco",
+      "date": "2026-04-26"
+    },
+    "items": [
+      {
+        "description": "56366 RASPERRIES",
+        "sku": "56366",
+        "qty": null,
+        "unitPrice": null,
+        "price": 3.99,
+        "enrichment": null
+      },
+      {
+        "description": "57554 BLUEBERRIES",
+        "sku": "57554",
+        "qty": null,
+        "unitPrice": null,
+        "price": 8.29,
+        "enrichment": null
+      },
+      {
+        "description": "77053 GRAPE/TOMATO",
+        "sku": "77053",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.59,
+        "enrichment": null
+      },
+      {
+        "description": "21020 VINE/TOMATO",
+        "sku": "21020",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.99,
+        "enrichment": null
+      },
+      {
+        "description": "142437 KS GR FD BTR",
+        "sku": "142437",
+        "qty": null,
+        "unitPrice": null,
+        "price": 13.99,
+        "enrichment": null
+      },
+      {
+        "description": "720650 MINI CUKES",
+        "sku": "720650",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "1738408 KS FR 2DZ",
+        "sku": "1738408",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.19,
+        "enrichment": null
+      },
+      {
+        "description": "1755444 KS DUT 20PCR",
+        "sku": "1755444",
+        "qty": null,
+        "unitPrice": null,
+        "price": 23.79,
+        "enrichment": null
+      },
+      {
+        "description": "9262015 KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "1262178 R2 MILK3/59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 101.8,
+      "tax": 1.55,
+      "total": 103.35,
+      "itemCount": 10,
+      "sumOfItems": 101.8,
+      "subtotalMatch": true
+    }
+  },
+  "expected": {
+    "store": {
+      "name": null,
+      "date": null
+    },
+    "items": [],
+    "totals": {
+      "subtotal": null,
+      "tax": null,
+      "total": null,
+      "itemCount": 0,
+      "sumOfItems": 0,
+      "subtotalMatch": null
+    }
+  }
+}

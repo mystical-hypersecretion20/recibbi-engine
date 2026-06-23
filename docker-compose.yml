@@ -1,0 +1,202 @@
+# Compatible with `docker compose` and `podman compose` (and podman-compose).
+# Notes for Podman / rootless:
+#   - Images are fully qualified (docker.io/...) so Podman won't prompt for a registry.
+#   - Containers run as a non-root user; no privileged flags or host networking.
+#   - Data lives in a named volume (correct permissions on rootless Podman out of the box).
+#     To put receipt files on the host instead, see the bind-mount note in the README.
+# Project name defaults to "receipt-enricher" (unchanged for normal/prod use).
+# The acceptance suite overrides it (RECEIPT_PROJECT=test-receipt-enricher) AND
+# passes a matching `-p`, so the stack is fully isolated from a prod stack.
+name: ${RECEIPT_PROJECT:-receipt-enricher}
+
+services:
+  redis:
+    image: docker.io/library/redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    labels:
+      io.receipt-enricher.suite: "${RECEIPT_SUITE:-prod}"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["node", "src/server.js"]
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      REDIS_URL: redis://redis:6379
+      DATA_DIR: /app/data
+      # Durable record backend: sqlite (default) | filesystem. The SQLite DB
+      # defaults to /app/data/receipt-enricher.db — on the shared data volume, so
+      # it survives restarts and is reachable by both api and worker.
+      PERSISTENCE: ${PERSISTENCE:-sqlite}
+      # 'auto' picks vision when a key is present, else tesseract (prod default).
+      # The acceptance suite sets this explicitly (tesseract by default).
+      OCR_PROVIDER: ${OCR_PROVIDER:-auto}
+      # Base URL the API advertises in statusUrl/viewUrl. Defaults to localhost:8080
+      # (matches the default published port). When the host port differs (e.g. the
+      # acceptance suite on 18080), set PUBLIC_BASE_URL — the suite exports it, and
+      # any value in .env / the shell wins here too.
+      # NOTE: kept flat (no nested ${...}) — podman-compose mishandles nested
+      # default expansions and leaks a literal '}'.
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:8080}
+      # Optional: apply this profile (id or name) to every upload that doesn't
+      # specify one. Empty by default (no profile applied unless requested).
+      DEFAULT_PROFILE_ID: ${DEFAULT_PROFILE_ID:-}
+      # Remote OCR sidecars (used only when OCR_PROVIDER=paddle|paddle-vl). These
+      # are the optional ocr-paddle / ocr-paddle-vl services below, reached over
+      # the compose network by service name. Defaults match config.js; override
+      # to point at an external service.
+      OCR_PADDLE_URL: ${OCR_PADDLE_URL:-http://ocr-paddle:8090}
+      OCR_PADDLE_VL_URL: ${OCR_PADDLE_VL_URL:-http://ocr-paddle-vl:8090}
+      OCR_REST_TIMEOUT_MS: ${OCR_REST_TIMEOUT_MS:-600000}
+    labels:
+      # Test indicator: "prod" for normal runs, "test" when the suite sets it.
+      io.receipt-enricher.suite: "${RECEIPT_SUITE:-prod}"
+    ports:
+      # Host port defaults to 8080; the suite uses 18080 to coexist with prod.
+      - "${RECEIPT_API_PORT:-8080}:8080"
+    volumes:
+      - receipt-data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      # Script form (no inline shell) so it runs cleanly even when the compose
+      # runtime executes the healthcheck via /bin/sh.
+      test: ["CMD", "node", "src/healthcheck.js"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["node", "src/worker.js"]
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      REDIS_URL: redis://redis:6379
+      DATA_DIR: /app/data
+      PERSISTENCE: ${PERSISTENCE:-sqlite}
+      OCR_PROVIDER: ${OCR_PROVIDER:-auto}
+      DEFAULT_PROFILE_ID: ${DEFAULT_PROFILE_ID:-}
+      # The worker is what actually calls the OCR sidecars (it runs the pipeline).
+      OCR_PADDLE_URL: ${OCR_PADDLE_URL:-http://ocr-paddle:8090}
+      OCR_PADDLE_VL_URL: ${OCR_PADDLE_VL_URL:-http://ocr-paddle-vl:8090}
+      OCR_REST_TIMEOUT_MS: ${OCR_REST_TIMEOUT_MS:-600000}
+    labels:
+      io.receipt-enricher.suite: "${RECEIPT_SUITE:-prod}"
+    volumes:
+      - receipt-data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      # The worker serves no HTTP; verify its real dependency (Redis) instead.
+      test: ["CMD", "node", "src/healthcheck-worker.js"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+
+  # Optional. Only starts when you opt in:
+  #   docker compose --profile telegram up   (or)   podman compose --profile telegram up
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["node", "src/bot.js"]
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      REDIS_URL: redis://redis:6379
+      DATA_DIR: /app/data
+      API_URL: http://api:8080
+    depends_on:
+      redis:
+        condition: service_healthy
+      api:
+        condition: service_started
+    restart: unless-stopped
+    profiles:
+      - telegram
+
+  # Optional OCR sidecars. Heavy (Python + PaddleOCR + baked-in model blobs), so
+  # they are NOT part of a plain `up` — opt in with a compose profile AND point
+  # the api/worker at them with OCR_PROVIDER:
+  #
+  #   # PP-OCRv6 small (fast, ~30 MB models):
+  #   OCR_PROVIDER=paddle podman-compose -p receipt-enricher --profile paddle up --build -d
+  #
+  #   # PaddleOCR-VL 1.6 (~2 GB image, ~120s/receipt):
+  #   OCR_PROVIDER=paddle-vl podman-compose -p receipt-enricher --profile paddle-vl up --build -d
+  #
+  # Model blobs are baked in at build time — stage them first with
+  # scripts/stage-paddle-models.sh. Pinned to linux/amd64 (emulated on arm64).
+  ocr-paddle:
+    build:
+      context: ./services/ocr-paddle
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    labels:
+      io.receipt-enricher.suite: "${RECEIPT_SUITE:-prod}"
+    # Internal-only by default; expose a host port for debugging if needed.
+    expose:
+      - "8090"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8090/health',timeout=3).status==200 else 1)"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 40s
+    restart: unless-stopped
+    profiles:
+      - paddle
+
+  ocr-paddle-vl:
+    build:
+      context: ./services/ocr-paddle-vl
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    labels:
+      io.receipt-enricher.suite: "${RECEIPT_SUITE:-prod}"
+    environment:
+      # VLM generation params. Defaults match the eval profile
+      # (20260615T-…-250k-1024). Override (e.g. lower MAX_NEW_TOKENS / MAX_PIXELS)
+      # to fit constrained RAM — full-profile generation needs well over 12 GiB,
+      # which OOMs the amd64-EMULATED sidecar on a small host; reduced params let
+      # it complete there at some loss of fidelity.
+      PADDLEOCR_VL_MAX_NEW_TOKENS: ${PADDLEOCR_VL_MAX_NEW_TOKENS:-1024}
+      PADDLEOCR_VL_MAX_PIXELS: ${PADDLEOCR_VL_MAX_PIXELS:-250000}
+      PADDLEOCR_VL_MIN_PIXELS: ${PADDLEOCR_VL_MIN_PIXELS:-3136}
+    expose:
+      - "8090"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8090/health',timeout=3).status==200 else 1)"]
+      interval: 20s
+      timeout: 5s
+      retries: 30
+      start_period: 300s
+    restart: unless-stopped
+    profiles:
+      - paddle-vl
+
+volumes:
+  redis-data:
+  receipt-data:

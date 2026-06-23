@@ -1,0 +1,6 @@
+{
+  "name": "usGrocery1",
+  "description": "Example profile bound to the usGrocery transformer (normalizes store name + date, folds per-item discounts into the discounted item, and rewrites Costco water items).",
+  "transformer": "usGrocery",
+  "config": {}
+}

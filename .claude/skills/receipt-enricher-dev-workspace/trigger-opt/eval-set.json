@@ -1,0 +1,22 @@
+[
+  {"query": "the receipt-enricher tests pass but I want to actually see the extracted line items for the costco photo in samples/ — how do I run that and view it?", "should_trigger": true},
+  {"query": "why does npm run test:live:vision keep skipping with 'no anthropic API key set' even though I put ANTHROPIC_API_KEY in the .env file?", "should_trigger": true},
+  {"query": "tesseract is spitting out vertical gibberish for the receipt photo and finding 0 items, what's going on here", "should_trigger": true},
+  {"query": "add Wegmans and Trader Joe's to the store detection in the parser", "should_trigger": true},
+  {"query": "I want to bring up the web view so I can look at a processed receipt at localhost:8080 without docker or redis running", "should_trigger": true},
+  {"query": "the worker can't connect to redis and my uploaded receipt is stuck in 'queued' forever", "should_trigger": true},
+  {"query": "tavily enrichment throws UNABLE_TO_GET_ISSUER_CERT_LOCALLY when the worker processes a receipt", "should_trigger": true},
+  {"query": "the vision extraction is crashing with MODULE_NOT_FOUND for ./config when I set an anthropic key", "should_trigger": true},
+  {"query": "extend the pipeline so the summary also reports how many items got enriched vs skipped", "should_trigger": true},
+  {"query": "how do I upload a receipt with curl to the api, wait for it to finish, then open the /view page and grab the json", "should_trigger": true},
+  {"query": "extract all the text and tables from this scanned PDF lease agreement and summarize the key terms", "should_trigger": false},
+  {"query": "build me a Tesseract OCR microservice in Python with FastAPI that returns bounding boxes", "should_trigger": false},
+  {"query": "set up a BullMQ queue backed by Redis for my new transactional email sending service", "should_trigger": false},
+  {"query": "my Anthropic API call keeps returning a 401, here's my python script using the anthropic SDK — what's wrong?", "should_trigger": false},
+  {"query": "here's a photo of my grocery receipt, can you read it and tell me the total and itemize it for me", "should_trigger": false},
+  {"query": "how do I fix UNABLE_TO_GET_ISSUER_CERT_LOCALLY when running npm install behind my company proxy in general", "should_trigger": false},
+  {"query": "write me a Dockerfile and docker-compose.yml for a fresh node + express app with a redis service", "should_trigger": false},
+  {"query": "I need to batch-rotate a folder of jpeg photos 90 degrees counter-clockwise on my mac", "should_trigger": false},
+  {"query": "review my .gitignore and make sure no .env files can get committed to git", "should_trigger": false},
+  {"query": "write a small bash CLI that wraps curl to hit the GitHub issues API and pretty-print with jq", "should_trigger": false}
+]

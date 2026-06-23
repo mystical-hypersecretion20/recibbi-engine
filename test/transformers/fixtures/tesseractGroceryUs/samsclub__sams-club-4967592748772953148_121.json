@@ -1,0 +1,365 @@
+{
+  "transformer": "tesseractGroceryUs",
+  "name": "samsclub/sams-club-4967592748772953148_121.jpg",
+  "note": "Real Tesseract parse of this sample (see analysis/). expected = current transformer output; regenerate with generate-fixtures.js.",
+  "input": {
+    "store": {
+      "name": null,
+      "date": "02/19/26"
+    },
+    "items": [
+      {
+        "description": "0990411830 DETERGENT",
+        "sku": "0990411830",
+        "qty": null,
+        "unitPrice": null,
+        "price": 19.98,
+        "enrichment": null
+      },
+      {
+        "description": "2 AT 1 FOR 6.57",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 13.14,
+        "enrichment": null
+      },
+      {
+        "description": "0000026492 ORG GALA",
+        "sku": "0000026492",
+        "qty": null,
+        "unitPrice": null,
+        "price": 7.17,
+        "enrichment": null
+      },
+      {
+        "description": "0980242818 COSMIC CRIS",
+        "sku": "0980242818",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.92,
+        "enrichment": null
+      },
+      {
+        "description": "2 AT 1 FOR 5.72",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 11.44,
+        "enrichment": null
+      },
+      {
+        "description": "0000284479 BLACKBERRIE",
+        "sku": "0000284479",
+        "qty": null,
+        "unitPrice": null,
+        "price": 3.35,
+        "enrichment": null
+      },
+      {
+        "description": "0990384526 COLD_SMK_SA",
+        "sku": "0990384526",
+        "qty": null,
+        "unitPrice": null,
+        "price": 21.98,
+        "enrichment": null
+      },
+      {
+        "description": "0000534517 WHOLE MILK",
+        "sku": "0000534517",
+        "qty": null,
+        "unitPrice": null,
+        "price": 3.67,
+        "enrichment": null
+      },
+      {
+        "description": "0990422756 KG SLTD STK",
+        "sku": "0990422756",
+        "qty": null,
+        "unitPrice": null,
+        "price": 12.22,
+        "enrichment": null
+      },
+      {
+        "description": "0990371105 MM DIAPERS",
+        "sku": "0990371105",
+        "qty": null,
+        "unitPrice": null,
+        "price": 39.98,
+        "enrichment": null
+      },
+      {
+        "description": "0990290682 PULL-UPS B8",
+        "sku": "0990290682",
+        "qty": null,
+        "unitPrice": null,
+        "price": 39.98,
+        "enrichment": null
+      },
+      {
+        "description": "Ins? SY DoG CHOW",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 1.8,
+        "enrichment": null
+      },
+      {
+        "description": "SHOPPING CARD REDEMPTION",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.39,
+        "enrichment": null
+      },
+      {
+        "description": "SHOPPING CARD REDEMPTION",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.65,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 212.26,
+      "tax": null,
+      "total": 215.3,
+      "itemCount": 14,
+      "sumOfItems": 190.67,
+      "subtotalMatch": false
+    }
+  },
+  "groundTruth": {
+    "store": {
+      "name": "Sam's Club",
+      "date": "2026-02-19"
+    },
+    "items": [
+      {
+        "description": "DOG CHOW",
+        "sku": "0990065861",
+        "qty": 1,
+        "unitPrice": 26.78,
+        "price": 26.78,
+        "enrichment": null
+      },
+      {
+        "description": "DETERGENT",
+        "sku": "0990411830",
+        "qty": 1,
+        "unitPrice": 19.98,
+        "price": 19.98,
+        "enrichment": null
+      },
+      {
+        "description": "GRAPE TOMAT",
+        "sku": "0000473008",
+        "qty": 2,
+        "unitPrice": 6.57,
+        "price": 13.14,
+        "enrichment": null
+      },
+      {
+        "description": "ORG GALA",
+        "sku": "0000026492",
+        "qty": 1,
+        "unitPrice": 7.17,
+        "price": 7.17,
+        "enrichment": null
+      },
+      {
+        "description": "COSMIC CRIS",
+        "sku": "0980242818",
+        "qty": 1,
+        "unitPrice": 4.92,
+        "price": 4.92,
+        "enrichment": null
+      },
+      {
+        "description": "BLUEBERRIES",
+        "sku": "0000279457",
+        "qty": 2,
+        "unitPrice": 5.72,
+        "price": 11.44,
+        "enrichment": null
+      },
+      {
+        "description": "RASPBERRIES",
+        "sku": "0000033249",
+        "qty": 1,
+        "unitPrice": 3.97,
+        "price": 3.97,
+        "enrichment": null
+      },
+      {
+        "description": "BLACKBERRIE",
+        "sku": "0000284479",
+        "qty": 1,
+        "unitPrice": 3.35,
+        "price": 3.35,
+        "enrichment": null
+      },
+      {
+        "description": "COLD_SMK_SA",
+        "sku": "0990384526",
+        "qty": 1,
+        "unitPrice": 21.98,
+        "price": 21.98,
+        "enrichment": null
+      },
+      {
+        "description": "WHOLE MILK",
+        "sku": "0000534517",
+        "qty": 1,
+        "unitPrice": 3.67,
+        "price": 3.67,
+        "enrichment": null
+      },
+      {
+        "description": "1 GALLON WT",
+        "sku": "0000578576",
+        "qty": 1,
+        "unitPrice": 5.48,
+        "price": 5.48,
+        "enrichment": null
+      },
+      {
+        "description": "KG SLTD STK",
+        "sku": "0990422756",
+        "qty": 1,
+        "unitPrice": 12.22,
+        "price": 12.22,
+        "enrichment": null
+      },
+      {
+        "description": "MM DIAPERS",
+        "sku": "0990371105",
+        "qty": 1,
+        "unitPrice": 39.98,
+        "price": 39.98,
+        "enrichment": null
+      },
+      {
+        "description": "PULL-UPS B8",
+        "sku": "0990290682",
+        "qty": 1,
+        "unitPrice": 39.98,
+        "price": 39.98,
+        "enrichment": null
+      },
+      {
+        "description": "DOG CHOW",
+        "sku": "INST SV",
+        "qty": null,
+        "unitPrice": null,
+        "price": -1.8,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 212.26,
+      "tax": 3.04,
+      "total": 215.3,
+      "itemCount": 15,
+      "sumOfItems": 212.26,
+      "subtotalMatch": true
+    }
+  },
+  "expected": {
+    "store": {
+      "name": "Sam's Club",
+      "date": "02/19/26"
+    },
+    "items": [
+      {
+        "description": "DETERGENT",
+        "sku": "0990411830",
+        "qty": null,
+        "unitPrice": null,
+        "price": 19.98,
+        "enrichment": null
+      },
+      {
+        "description": "ORG GALA",
+        "sku": "0000026492",
+        "qty": null,
+        "unitPrice": null,
+        "price": 7.17,
+        "enrichment": null
+      },
+      {
+        "description": "COSMIC CRIS",
+        "sku": "0980242818",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.92,
+        "enrichment": null
+      },
+      {
+        "description": "BLACKBERRIE",
+        "sku": "0000284479",
+        "qty": null,
+        "unitPrice": null,
+        "price": 3.35,
+        "enrichment": null
+      },
+      {
+        "description": "COLD_SMK_SA",
+        "sku": "0990384526",
+        "qty": null,
+        "unitPrice": null,
+        "price": 21.98,
+        "enrichment": null
+      },
+      {
+        "description": "WHOLE MILK",
+        "sku": "0000534517",
+        "qty": null,
+        "unitPrice": null,
+        "price": 3.67,
+        "enrichment": null
+      },
+      {
+        "description": "KG SLTD STK",
+        "sku": "0990422756",
+        "qty": null,
+        "unitPrice": null,
+        "price": 12.22,
+        "enrichment": null
+      },
+      {
+        "description": "MM DIAPERS",
+        "sku": "0990371105",
+        "qty": null,
+        "unitPrice": null,
+        "price": 39.98,
+        "enrichment": null
+      },
+      {
+        "description": "PULL-UPS B8",
+        "sku": "0990290682",
+        "qty": null,
+        "unitPrice": null,
+        "price": 39.98,
+        "enrichment": null
+      },
+      {
+        "description": "INS? SY DOG CHOW",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": -1.8,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 212.26,
+      "tax": null,
+      "total": 215.3,
+      "itemCount": 10,
+      "sumOfItems": 151.45,
+      "subtotalMatch": false
+    }
+  }
+}

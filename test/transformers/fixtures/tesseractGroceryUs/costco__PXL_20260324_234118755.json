@@ -1,0 +1,173 @@
+{
+  "transformer": "tesseractGroceryUs",
+  "name": "costco/PXL_20260324_234118755.jpg",
+  "note": "Real Tesseract parse of this sample (see analysis/). expected = current transformer output; regenerate with generate-fixtures.js.",
+  "input": {
+    "store": {
+      "name": "Costco",
+      "date": "03/24/2026"
+    },
+    "items": [
+      {
+        "description": "BN E 1068083 ORG FR EGGS",
+        "sku": "1068083",
+        "qty": null,
+        "unitPrice": null,
+        "price": 7.69,
+        "enrichment": null
+      },
+      {
+        "description": "BE FE 9262015 KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "a 6262016 #¥KS BATH»",
+        "sku": "6262016",
+        "qty": null,
+        "unitPrice": null,
+        "price": 20.99,
+        "enrichment": null
+      },
+      {
+        "description": "I CE 1262178 A2 MILK3/89Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "| a SUBTOTA",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 56.66,
+        "enrichment": null
+      },
+      {
+        "description": "Eo ™ §",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 1.36,
+        "enrichment": null
+      },
+      {
+        "description": "fF A",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.5,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": null,
+      "tax": null,
+      "total": null,
+      "itemCount": 7,
+      "sumOfItems": 121.18,
+      "subtotalMatch": null
+    }
+  },
+  "groundTruth": {
+    "store": {
+      "name": "Costco",
+      "date": "2026-03-24"
+    },
+    "items": [
+      {
+        "description": "ORG FR EGGS",
+        "sku": "1068083",
+        "qty": null,
+        "unitPrice": null,
+        "price": 7.69,
+        "enrichment": null
+      },
+      {
+        "description": "KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "**KS BATH**",
+        "sku": "6262016",
+        "qty": null,
+        "unitPrice": null,
+        "price": 20.99,
+        "enrichment": null
+      },
+      {
+        "description": "A2 MILK3/59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 56.66,
+      "tax": 1.36,
+      "total": 58.02,
+      "itemCount": 4,
+      "sumOfItems": 56.66,
+      "subtotalMatch": true
+    }
+  },
+  "expected": {
+    "store": {
+      "name": "Costco",
+      "date": "03/24/2026"
+    },
+    "items": [
+      {
+        "description": "ORG FR EGGS",
+        "sku": "1068083",
+        "qty": null,
+        "unitPrice": null,
+        "price": 7.69,
+        "enrichment": null
+      },
+      {
+        "description": "KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS BATH",
+        "sku": "6262016",
+        "qty": null,
+        "unitPrice": null,
+        "price": 20.99,
+        "enrichment": null
+      },
+      {
+        "description": "A2 MILK3/89Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": null,
+      "tax": null,
+      "total": null,
+      "itemCount": 4,
+      "sumOfItems": 56.66,
+      "subtotalMatch": null
+    }
+  }
+}

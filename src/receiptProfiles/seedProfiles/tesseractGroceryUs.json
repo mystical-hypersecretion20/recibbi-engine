@@ -1,0 +1,6 @@
+{
+  "name": "tesseractGroceryUs1",
+  "description": "Example profile bound to the tesseractGroceryUs transformer (repairs noisy offline-OCR output: strips junk prefixes and embedded SKU codes, Title-Cases ALL-CAPS register text, recovers the store name, and rewrites Costco water items).",
+  "transformer": "tesseractGroceryUs",
+  "config": {}
+}

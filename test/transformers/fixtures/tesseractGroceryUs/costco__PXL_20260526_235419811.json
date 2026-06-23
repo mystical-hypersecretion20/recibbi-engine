@@ -1,0 +1,330 @@
+{
+  "transformer": "tesseractGroceryUs",
+  "name": "costco/PXL_20260526_235419811.jpg",
+  "note": "Real Tesseract parse of this sample (see analysis/). expected = current transformer output; regenerate with generate-fixtures.js.",
+  "input": {
+    "store": null,
+    "items": [
+      {
+        "description": "E 931484 KS WATER GAL",
+        "sku": "931484",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 1462714 KS ORG A2 PR",
+        "sku": "1462714",
+        "qty": null,
+        "unitPrice": null,
+        "price": 12.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 1199652 BUTER CROISS",
+        "sku": "1199652",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 975416 SAN PELL MIN",
+        "sku": "975416",
+        "qty": null,
+        "unitPrice": null,
+        "price": 23.74,
+        "enrichment": null
+      },
+      {
+        "description": "E 1948524 TRIMO YOGURT",
+        "sku": "1948524",
+        "qty": null,
+        "unitPrice": null,
+        "price": 8.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 1738408 KS FR 2DZ",
+        "sku": "1738408",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.89,
+        "enrichment": null
+      },
+      {
+        "description": "E 7017 3LB ORG ENVY",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 99006 SWISS",
+        "sku": "99006",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.33,
+        "enrichment": null
+      },
+      {
+        "description": "E 1455728 US WAGYUBEEF",
+        "sku": "1455728",
+        "qty": null,
+        "unitPrice": null,
+        "price": 19.99,
+        "enrichment": null
+      },
+      {
+        "description": "= 60357 MIXED PEPPER",
+        "sku": "60357",
+        "qty": null,
+        "unitPrice": null,
+        "price": 7.49,
+        "enrichment": null
+      },
+      {
+        "description": "E 331222 SOUR CREAM",
+        "sku": "331222",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.55,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": null,
+      "tax": null,
+      "total": null,
+      "itemCount": 11,
+      "sumOfItems": 116.94,
+      "subtotalMatch": null
+    }
+  },
+  "groundTruth": {
+    "store": {
+      "name": "Costco",
+      "date": null
+    },
+    "items": [
+      {
+        "description": "KS WATER GAL",
+        "sku": "931484",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS ORG A2 PR",
+        "sku": "1462714",
+        "qty": null,
+        "unitPrice": null,
+        "price": 12.99,
+        "enrichment": null
+      },
+      {
+        "description": "BUTTER CROISS",
+        "sku": "1199652",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "SAN PELL MIN",
+        "sku": "975416",
+        "qty": null,
+        "unitPrice": null,
+        "price": 23.74,
+        "enrichment": null
+      },
+      {
+        "description": "975416",
+        "sku": "000037935 / 975416",
+        "qty": null,
+        "unitPrice": null,
+        "price": -5.75,
+        "enrichment": null
+      },
+      {
+        "description": "TRIMO YOGURT",
+        "sku": "1948524",
+        "qty": null,
+        "unitPrice": null,
+        "price": 8.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS FR 2DZ",
+        "sku": "1738408",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.89,
+        "enrichment": null
+      },
+      {
+        "description": "3LB ORG ENVY",
+        "sku": "7017",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "SWISS",
+        "sku": "99006",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.33,
+        "enrichment": null
+      },
+      {
+        "description": "US WAGYUBEEF",
+        "sku": "1455728",
+        "qty": null,
+        "unitPrice": null,
+        "price": 19.99,
+        "enrichment": null
+      },
+      {
+        "description": "MIXED PEPPER",
+        "sku": "60357",
+        "qty": null,
+        "unitPrice": null,
+        "price": 7.49,
+        "enrichment": null
+      },
+      {
+        "description": "SOUR CREAM",
+        "sku": "33122",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.59,
+        "enrichment": null
+      },
+      {
+        "description": "YELLOW ONION",
+        "sku": "7812",
+        "qty": null,
+        "unitPrice": null,
+        "price": 3.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS FR ZDZ",
+        "sku": "1738908",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.09,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": null,
+      "tax": null,
+      "total": null,
+      "itemCount": 14,
+      "sumOfItems": 119.31,
+      "subtotalMatch": null
+    }
+  },
+  "expected": {
+    "store": {
+      "name": "Costco",
+      "date": null
+    },
+    "items": [
+      {
+        "description": "KS WATER GAL",
+        "sku": "931484",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS ORG A2 PR",
+        "sku": "1462714",
+        "qty": null,
+        "unitPrice": null,
+        "price": 12.99,
+        "enrichment": null
+      },
+      {
+        "description": "BUTER CROISS",
+        "sku": "1199652",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "SAN PELL MIN",
+        "sku": "975416",
+        "qty": null,
+        "unitPrice": null,
+        "price": 23.74,
+        "enrichment": null
+      },
+      {
+        "description": "TRIMO YOGURT",
+        "sku": "1948524",
+        "qty": null,
+        "unitPrice": null,
+        "price": 8.99,
+        "enrichment": null
+      },
+      {
+        "description": "3LB ORG ENVY",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "SWISS",
+        "sku": "99006",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.33,
+        "enrichment": null
+      },
+      {
+        "description": "US WAGYUBEEF",
+        "sku": "1455728",
+        "qty": null,
+        "unitPrice": null,
+        "price": 19.99,
+        "enrichment": null
+      },
+      {
+        "description": "MIXED PEPPER",
+        "sku": "60357",
+        "qty": null,
+        "unitPrice": null,
+        "price": 7.49,
+        "enrichment": null
+      },
+      {
+        "description": "SOUR CREAM",
+        "sku": "331222",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.55,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": null,
+      "tax": null,
+      "total": null,
+      "itemCount": 10,
+      "sumOfItems": 112.05,
+      "subtotalMatch": null
+    }
+  }
+}

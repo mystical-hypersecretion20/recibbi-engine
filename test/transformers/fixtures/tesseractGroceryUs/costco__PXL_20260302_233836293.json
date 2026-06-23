@@ -1,0 +1,477 @@
+{
+  "transformer": "tesseractGroceryUs",
+  "name": "costco/PXL_20260302_233836293.jpg",
+  "note": "Real Tesseract parse of this sample (see analysis/). expected = current transformer output; regenerate with generate-fixtures.js.",
+  "input": {
+    "store": {
+      "name": "Costco",
+      "date": "03/02/2026"
+    },
+    "items": [
+      {
+        "description": "E 1025795 KS 5DZ EGGS",
+        "sku": "1025795",
+        "qty": null,
+        "unitPrice": null,
+        "price": 9.39,
+        "enrichment": null
+      },
+      {
+        "description": "E 1217608 KS ORG BROCI",
+        "sku": "1217608",
+        "qty": null,
+        "unitPrice": null,
+        "price": 9.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 931484 KS WATER GAL",
+        "sku": "931484",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 9262015 KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 9262015 KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 1136340 3LB ORG GALA",
+        "sku": "1136340",
+        "qty": null,
+        "unitPrice": null,
+        "price": 3.99,
+        "enrichment": null
+      },
+      {
+        "description": "3 60357 MIXED PEPPER",
+        "sku": "60357",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.89,
+        "enrichment": null
+      },
+      {
+        "description": "E 1959421 RAW PSTACHIO",
+        "sku": "1959421",
+        "qty": null,
+        "unitPrice": null,
+        "price": 14.99,
+        "enrichment": null
+      },
+      {
+        "description": "| 3 7950 AB COSMIC",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.89,
+        "enrichment": null
+      },
+      {
+        "description": "E 1428777 BLWCKBERRIES",
+        "sku": "1428777",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.49,
+        "enrichment": null
+      },
+      {
+        "description": "E 56356 RASPBERRIES",
+        "sku": "56356",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.79,
+        "enrichment": null
+      },
+      {
+        "description": "3 57554 BLJEBERRIES",
+        "sku": "57554",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.59,
+        "enrichment": null
+      },
+      {
+        "description": "| E 77053 GRAPE TOMATO",
+        "sku": "77053",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.59,
+        "enrichment": null
+      },
+      {
+        "description": "E 1285362 K$ GUAC SNGL",
+        "sku": "1285362",
+        "qty": null,
+        "unitPrice": null,
+        "price": 11.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 1785932 BROCOLI CHDR",
+        "sku": "1785932",
+        "qty": null,
+        "unitPrice": null,
+        "price": 9.99,
+        "enrichment": null
+      },
+      {
+        "description": "| E 99006 BWISS",
+        "sku": "99006",
+        "qty": null,
+        "unitPrice": null,
+        "price": 17.83,
+        "enrichment": null
+      },
+      {
+        "description": "E 47729 /TENDERLOIN",
+        "sku": "47729",
+        "qty": null,
+        "unitPrice": null,
+        "price": 22.77,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 198.13,
+      "tax": 0,
+      "total": null,
+      "itemCount": 17,
+      "sumOfItems": 176.15,
+      "subtotalMatch": false
+    }
+  },
+  "groundTruth": {
+    "store": {
+      "name": "Costco",
+      "date": "2026-03-02"
+    },
+    "items": [
+      {
+        "description": "A2 MILK3/59Z",
+        "sku": "1262178",
+        "qty": 1,
+        "unitPrice": 10.99,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "A2 MILK3/59Z",
+        "sku": "1262178",
+        "qty": 1,
+        "unitPrice": 10.99,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS 5DZ EGGS",
+        "sku": "1025795",
+        "qty": 1,
+        "unitPrice": 9.39,
+        "price": 9.39,
+        "enrichment": null
+      },
+      {
+        "description": "KS ORG BROCI",
+        "sku": "1217608",
+        "qty": 1,
+        "unitPrice": 9.99,
+        "price": 9.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS WATER GAL",
+        "sku": "931484",
+        "qty": 1,
+        "unitPrice": 4.99,
+        "price": 4.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS SPARK WAT",
+        "sku": "9262015",
+        "qty": 1,
+        "unitPrice": 16.99,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS SPARK WAT",
+        "sku": "9262015",
+        "qty": 1,
+        "unitPrice": 16.99,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "3LB ORG GALA",
+        "sku": "1136340",
+        "qty": 1,
+        "unitPrice": 3.99,
+        "price": 3.99,
+        "enrichment": null
+      },
+      {
+        "description": "MIXED PEPPER",
+        "sku": "60357",
+        "qty": 1,
+        "unitPrice": 6.89,
+        "price": 6.89,
+        "enrichment": null
+      },
+      {
+        "description": "RAW PISTACHIO",
+        "sku": "1959421",
+        "qty": 1,
+        "unitPrice": 14.99,
+        "price": 14.99,
+        "enrichment": null
+      },
+      {
+        "description": "4LB COSMIC",
+        "sku": "7950",
+        "qty": 1,
+        "unitPrice": 4.89,
+        "price": 4.89,
+        "enrichment": null
+      },
+      {
+        "description": "BLACKBERRIES",
+        "sku": "1428777",
+        "qty": 1,
+        "unitPrice": 6.49,
+        "price": 6.49,
+        "enrichment": null
+      },
+      {
+        "description": "RASPBERRIES",
+        "sku": "56356",
+        "qty": 1,
+        "unitPrice": 4.79,
+        "price": 4.79,
+        "enrichment": null
+      },
+      {
+        "description": "BLUEBERRIES",
+        "sku": "57554",
+        "qty": 1,
+        "unitPrice": 6.59,
+        "price": 6.59,
+        "enrichment": null
+      },
+      {
+        "description": "GRAPE TOMATO",
+        "sku": "77053",
+        "qty": 1,
+        "unitPrice": 6.59,
+        "price": 6.59,
+        "enrichment": null
+      },
+      {
+        "description": "KS GUAC SNGL",
+        "sku": "1285362",
+        "qty": 1,
+        "unitPrice": 11.99,
+        "price": 11.99,
+        "enrichment": null
+      },
+      {
+        "description": "BROCOLI CHDR",
+        "sku": "1785992",
+        "qty": 1,
+        "unitPrice": 9.99,
+        "price": 9.99,
+        "enrichment": null
+      },
+      {
+        "description": "SWISS",
+        "sku": "99006",
+        "qty": 1,
+        "unitPrice": 17.83,
+        "price": 17.83,
+        "enrichment": null
+      },
+      {
+        "description": "TENDERLOIN",
+        "sku": "47729",
+        "qty": 1,
+        "unitPrice": 22.77,
+        "price": 22.77,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 198.13,
+      "tax": 0,
+      "total": 198.13,
+      "itemCount": 19,
+      "sumOfItems": 198.13,
+      "subtotalMatch": true
+    }
+  },
+  "expected": {
+    "store": {
+      "name": "Costco",
+      "date": "03/02/2026"
+    },
+    "items": [
+      {
+        "description": "KS 5DZ EGGS",
+        "sku": "1025795",
+        "qty": null,
+        "unitPrice": null,
+        "price": 9.39,
+        "enrichment": null
+      },
+      {
+        "description": "KS ORG BROCI",
+        "sku": "1217608",
+        "qty": null,
+        "unitPrice": null,
+        "price": 9.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS WATER GAL",
+        "sku": "931484",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "3LB ORG GALA",
+        "sku": "1136340",
+        "qty": null,
+        "unitPrice": null,
+        "price": 3.99,
+        "enrichment": null
+      },
+      {
+        "description": "MIXED PEPPER",
+        "sku": "60357",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.89,
+        "enrichment": null
+      },
+      {
+        "description": "RAW PSTACHIO",
+        "sku": "1959421",
+        "qty": null,
+        "unitPrice": null,
+        "price": 14.99,
+        "enrichment": null
+      },
+      {
+        "description": "AB COSMIC",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.89,
+        "enrichment": null
+      },
+      {
+        "description": "BLWCKBERRIES",
+        "sku": "1428777",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.49,
+        "enrichment": null
+      },
+      {
+        "description": "RASPBERRIES",
+        "sku": "56356",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.79,
+        "enrichment": null
+      },
+      {
+        "description": "BLJEBERRIES",
+        "sku": "57554",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.59,
+        "enrichment": null
+      },
+      {
+        "description": "GRAPE TOMATO",
+        "sku": "77053",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.59,
+        "enrichment": null
+      },
+      {
+        "description": "K$ GUAC SNGL",
+        "sku": "1285362",
+        "qty": null,
+        "unitPrice": null,
+        "price": 11.99,
+        "enrichment": null
+      },
+      {
+        "description": "BROCOLI CHDR",
+        "sku": "1785932",
+        "qty": null,
+        "unitPrice": null,
+        "price": 9.99,
+        "enrichment": null
+      },
+      {
+        "description": "BWISS",
+        "sku": "99006",
+        "qty": null,
+        "unitPrice": null,
+        "price": 17.83,
+        "enrichment": null
+      },
+      {
+        "description": "TENDERLOIN",
+        "sku": "47729",
+        "qty": null,
+        "unitPrice": null,
+        "price": 22.77,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 198.13,
+      "tax": 0,
+      "total": null,
+      "itemCount": 17,
+      "sumOfItems": 176.15,
+      "subtotalMatch": false
+    }
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "transformer": "tesseractGroceryUs",
+  "name": "costco/PXL_20260322_180925431.jpg",
+  "note": "Real Tesseract parse of this sample (see analysis/). expected = current transformer output; regenerate with generate-fixtures.js.",
+  "input": {
+    "store": null,
+    "items": [
+      {
+        "description": "EE FE 9262015 KS SPARK WAT ~~",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "a 9702 CSR SLD KIT",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "a 99006 SWISS",
+        "sku": "99006",
+        "qty": null,
+        "unitPrice": null,
+        "price": 15.73,
+        "enrichment": null
+      },
+      {
+        "description": "BEE 0000377227 / 99006",
+        "sku": "0000377227",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.25,
+        "enrichment": null
+      },
+      {
+        "description": "8 1948524 TRIMO YOGURT",
+        "sku": "1948524",
+        "qty": null,
+        "unitPrice": null,
+        "price": 8.99,
+        "enrichment": null
+      },
+      {
+        "description": "el E 568915 ORG CUCUMBER",
+        "sku": "568915",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "Bd E 25595 COCKTAIL TOM",
+        "sku": "25595",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.49,
+        "enrichment": null
+      },
+      {
+        "description": "ha E 1199652 BUTER CROISS",
+        "sku": "1199652",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 62.92,
+      "tax": null,
+      "total": null,
+      "itemCount": 8,
+      "sumOfItems": 71.42,
+      "subtotalMatch": false
+    }
+  },
+  "groundTruth": {
+    "store": {
+      "name": "Costco",
+      "date": "2026-03-22"
+    },
+    "items": [
+      {
+        "description": "KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "CSR SLD KIT",
+        "sku": "9702",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "SWISS",
+        "sku": "99006",
+        "qty": null,
+        "unitPrice": null,
+        "price": 15.73,
+        "enrichment": null
+      },
+      {
+        "description": "0000377227 / 99006",
+        "sku": "0000377227",
+        "qty": null,
+        "unitPrice": null,
+        "price": -4.25,
+        "enrichment": null
+      },
+      {
+        "description": "TRIMO YOGURT",
+        "sku": "1948524",
+        "qty": null,
+        "unitPrice": null,
+        "price": 8.99,
+        "enrichment": null
+      },
+      {
+        "description": "ORG CUCUMBER",
+        "sku": "568915",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "COCKTAIL TOM",
+        "sku": "25595",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.49,
+        "enrichment": null
+      },
+      {
+        "description": "BUTER CROISS",
+        "sku": "1199652",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 62.92,
+      "tax": 0,
+      "total": 62.92,
+      "itemCount": 8,
+      "sumOfItems": 62.92,
+      "subtotalMatch": true
+    }
+  },
+  "expected": {
+    "store": {
+      "name": "Costco",
+      "date": null
+    },
+    "items": [
+      {
+        "description": "KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "CSR SLD KIT",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "SWISS",
+        "sku": "99006",
+        "qty": null,
+        "unitPrice": null,
+        "price": 15.73,
+        "enrichment": null
+      },
+      {
+        "description": "0000377227 / 99006",
+        "sku": "0000377227",
+        "qty": null,
+        "unitPrice": null,
+        "price": -4.25,
+        "enrichment": null
+      },
+      {
+        "description": "TRIMO YOGURT",
+        "sku": "1948524",
+        "qty": null,
+        "unitPrice": null,
+        "price": 8.99,
+        "enrichment": null
+      },
+      {
+        "description": "ORG CUCUMBER",
+        "sku": "568915",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "COCKTAIL TOM",
+        "sku": "25595",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.49,
+        "enrichment": null
+      },
+      {
+        "description": "BUTER CROISS",
+        "sku": "1199652",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 62.92,
+      "tax": null,
+      "total": null,
+      "itemCount": 8,
+      "sumOfItems": 62.92,
+      "subtotalMatch": true
+    }
+  }
+}

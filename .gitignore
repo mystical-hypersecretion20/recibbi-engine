@@ -1,0 +1,59 @@
+node_modules/
+
+# Environment / secrets — never commit any .env (keep the example template)
+.env
+.env.*
+*.env
+!.env.example
+!.env.sample
+
+# Durable receipt data (images + JSON records)
+data/uploads/*
+data/receipts/*
+!data/.gitkeep
+# SQLite persistence DB + filesystem tenant registry (local runs)
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/.registry/
+
+npm-debug.log*
+*.log
+.DS_Store
+
+# Temp/scratch files
+tmp_*.js
+
+# Local OCR analysis materials (sample harness scripts + generated comparisons)
+analysis/
+
+# Tesseract language data (large; fetch per machine — see tessdata/README.md)
+tessdata/*.traineddata
+tessdata/*.traineddata.gz
+
+# Vendored native prebuilt binaries (better-sqlite3); fetched per machine like
+# tessdata — see .vendor/README.md. Present in the build context for the
+# Dockerfile's offline native install; not committed.
+.vendor/*.tar.gz
+
+# Generated PaddleOCR model snapshots/tarballs (optional; recreate with
+# scripts/download-paddleocr-*.py — see scripts/README.md). Large + not committed.
+paddleocr-*-snapshot/
+paddleocr-*.tar.gz
+*-small-rotation-sweep-assets/
+*-small-rotation-sweep-assets.tar.gz
+# Root-level checksum file the PaddleOCR downloaders write next to a generated
+# tarball (the committed manifest lives at scripts/SHA256SUMS.txt and is NOT this).
+/SHA256SUMS.txt
+
+# PaddleOCR sidecar model blobs baked into their images at build time. Large +
+# not committed; stage per machine with scripts/stage-paddle-models.sh (copies
+# from the local receipt-lens-models bundle). The service code/Dockerfiles ARE
+# committed — only the model payloads under services/*/models are ignored.
+services/ocr-paddle/models/
+services/ocr-paddle-vl/models/
+# Internal CA certs staged into the sidecar build contexts so pip can verify TLS
+# behind the TLS-intercepting proxy. Machine-specific; not committed.
+# Staged by scripts/stage-paddle-certs.sh.
+services/ocr-paddle/certs/
+services/ocr-paddle-vl/certs/

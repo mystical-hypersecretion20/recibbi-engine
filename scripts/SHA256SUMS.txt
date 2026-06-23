@@ -1,0 +1,22 @@
+# Canonical SHA-256 checksums for the large 3rd-party blobs this repo needs but
+# does NOT commit to git (tessdata language data + better-sqlite3 prebuilts).
+#
+# Paths are relative to the repo root. Verify everything present with:
+#     scripts/verify-blobs.sh
+# or directly:
+#     (cd "$(git rev-parse --show-toplevel)" && shasum -a 256 -c scripts/SHA256SUMS.txt)
+#
+# These hashes were captured from the known-good working copy in the sibling
+# checkout ../claude-ocr-receipt/receipt-enricher. The fetch scripts verify
+# downloads against this file regardless of where the bytes came from (local
+# copy or network), so a corrupted/blocked/man-in-the-middled download fails
+# loudly instead of silently baking a bad blob into an image.
+
+# --- Tesseract language data (scripts/fetch-tessdata.sh) ---
+8280aed0782fe27257a68ea10fe7ef324ca0f8d85bd2fd145d1c2b560bcb66ba  tessdata/eng.traineddata
+e19f2ae860792fdf372cf48d8ce70ae5da3c4052962fe22e9de1f680c374bb0e  tessdata/osd.traineddata
+
+# --- better-sqlite3 native prebuilts (scripts/fetch-better-sqlite3.sh) ---
+a6229cbf859eb769e70d43602903448a5a5331f7bb048f67ae127662a8be4f20  .vendor/better-sqlite3-v11.10.0-node-v115-darwin-arm64.tar.gz
+0585a189928ed970d11c23cddab1423ef5a7990b5648434378808eb9e0352f31  .vendor/better-sqlite3-v11.10.0-node-v115-linuxmusl-arm64.tar.gz
+068ef8bcb9ba4d0e53a0d41a860f54537b43baf4944be51542c642138a233de9  .vendor/better-sqlite3-v11.10.0-node-v115-linuxmusl-x64.tar.gz

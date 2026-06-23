@@ -1,0 +1,218 @@
+{
+  "transformer": "tesseractGroceryUs",
+  "name": "costco/PXL_20260221_190349014.jpg",
+  "note": "Real Tesseract parse of this sample (see analysis/). expected = current transformer output; regenerate with generate-fixtures.js.",
+  "input": {
+    "store": null,
+    "items": [
+      {
+        "description": "E 975416 SAN PELLE MIN",
+        "sku": "975416",
+        "qty": null,
+        "unitPrice": null,
+        "price": 22.74,
+        "enrichment": null
+      },
+      {
+        "description": "E 975416 SAN hh",
+        "sku": "975416",
+        "qty": null,
+        "unitPrice": null,
+        "price": 22.74,
+        "enrichment": null
+      },
+      {
+        "description": "E 1262178 A2 MILK3Y59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 1262178 A2 MILK3F/59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.77,
+        "enrichment": null
+      },
+      {
+        "description": "E 1424237 KS GR ] BTR",
+        "sku": "1424237",
+        "qty": null,
+        "unitPrice": null,
+        "price": 13.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 99006 SWISS ©",
+        "sku": "99006",
+        "qty": null,
+        "unitPrice": null,
+        "price": 15.58,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": null,
+      "tax": null,
+      "total": null,
+      "itemCount": 6,
+      "sumOfItems": 96.81,
+      "subtotalMatch": null
+    }
+  },
+  "groundTruth": {
+    "store": {
+      "name": "Costco",
+      "date": null
+    },
+    "items": [
+      {
+        "description": "SAN PELL MIN",
+        "sku": "975416",
+        "qty": null,
+        "unitPrice": null,
+        "price": 22.74,
+        "enrichment": null
+      },
+      {
+        "description": "0000372064 / 975416",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": -5.75,
+        "enrichment": null
+      },
+      {
+        "description": "SAN PELL MIN",
+        "sku": "975416",
+        "qty": null,
+        "unitPrice": null,
+        "price": 22.74,
+        "enrichment": null
+      },
+      {
+        "description": "0000372064 / 975416",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": -5.75,
+        "enrichment": null
+      },
+      {
+        "description": "A2 MILK3/59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "A2 MILK3/59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS GR FD BTR",
+        "sku": "1424237",
+        "qty": null,
+        "unitPrice": null,
+        "price": 13.99,
+        "enrichment": null
+      },
+      {
+        "description": "SWISS",
+        "sku": "99006",
+        "qty": null,
+        "unitPrice": null,
+        "price": 15.58,
+        "enrichment": null
+      },
+      {
+        "description": "BUTER CROISS",
+        "sku": "1199652",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": null,
+      "tax": null,
+      "total": null,
+      "itemCount": 9,
+      "sumOfItems": 91.52,
+      "subtotalMatch": null
+    }
+  },
+  "expected": {
+    "store": {
+      "name": "Costco",
+      "date": null
+    },
+    "items": [
+      {
+        "description": "SAN PELLE MIN",
+        "sku": "975416",
+        "qty": null,
+        "unitPrice": null,
+        "price": 22.74,
+        "enrichment": null
+      },
+      {
+        "description": "SAN HH",
+        "sku": "975416",
+        "qty": null,
+        "unitPrice": null,
+        "price": 22.74,
+        "enrichment": null
+      },
+      {
+        "description": "A2 MILK3Y59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "A2 MILK3F/59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.77,
+        "enrichment": null
+      },
+      {
+        "description": "KS GR BTR",
+        "sku": "1424237",
+        "qty": null,
+        "unitPrice": null,
+        "price": 13.99,
+        "enrichment": null
+      },
+      {
+        "description": "SWISS",
+        "sku": "99006",
+        "qty": null,
+        "unitPrice": null,
+        "price": 15.58,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": null,
+      "tax": null,
+      "total": null,
+      "itemCount": 6,
+      "sumOfItems": 96.81,
+      "subtotalMatch": null
+    }
+  }
+}

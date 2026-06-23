@@ -1,0 +1,189 @@
+{
+  "transformer": "tesseractGroceryUs",
+  "name": "costco/PXL_20260124_203447770.jpg",
+  "note": "Real Tesseract parse of this sample (see analysis/). expected = current transformer output; regenerate with generate-fixtures.js.",
+  "input": {
+    "store": {
+      "name": "Costco",
+      "date": "01/24/2026"
+    },
+    "items": [
+      {
+        "description": "Rea E 1025795 KS DZ EGGS",
+        "sku": "1025795",
+        "qty": null,
+        "unitPrice": null,
+        "price": 9.49,
+        "enrichment": null
+      },
+      {
+        "description": "= E 1913652 OTTAVIO EVOO",
+        "sku": "1913652",
+        "qty": null,
+        "unitPrice": null,
+        "price": 20.99,
+        "enrichment": null
+      },
+      {
+        "description": "B= = E 1262178 A2 NILK3/59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "Eeams E 1262178 A2 WILK3/59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "= E 9262015 KS SPARK WAT ~~",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": ". AMOUNT: §",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 74.44,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 74.44,
+      "tax": 0,
+      "total": null,
+      "itemCount": 6,
+      "sumOfItems": 143.89,
+      "subtotalMatch": false
+    }
+  },
+  "groundTruth": {
+    "store": {
+      "name": "Costco",
+      "date": "2026-01-24"
+    },
+    "items": [
+      {
+        "description": "KS 5DZ EGGS",
+        "sku": "1025795",
+        "qty": 1,
+        "unitPrice": 9.49,
+        "price": 9.49,
+        "enrichment": null
+      },
+      {
+        "description": "KS WATER GAL",
+        "sku": "931484",
+        "qty": 1,
+        "unitPrice": 4.99,
+        "price": 4.99,
+        "enrichment": null
+      },
+      {
+        "description": "OTTAVIO EVOO",
+        "sku": "1913652",
+        "qty": 1,
+        "unitPrice": 20.99,
+        "price": 20.99,
+        "enrichment": null
+      },
+      {
+        "description": "A2 MILK3/59Z",
+        "sku": "1262178",
+        "qty": 1,
+        "unitPrice": 10.99,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "A2 MILK3/59Z",
+        "sku": "1262178",
+        "qty": 1,
+        "unitPrice": 10.99,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS SPARK WAT",
+        "sku": "9262015",
+        "qty": 1,
+        "unitPrice": 16.99,
+        "price": 16.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 74.44,
+      "tax": 0,
+      "total": 74.44,
+      "itemCount": 6,
+      "sumOfItems": 74.44,
+      "subtotalMatch": true
+    }
+  },
+  "expected": {
+    "store": {
+      "name": "Costco",
+      "date": "01/24/2026"
+    },
+    "items": [
+      {
+        "description": "KS DZ EGGS",
+        "sku": "1025795",
+        "qty": null,
+        "unitPrice": null,
+        "price": 9.49,
+        "enrichment": null
+      },
+      {
+        "description": "OTTAVIO EVOO",
+        "sku": "1913652",
+        "qty": null,
+        "unitPrice": null,
+        "price": 20.99,
+        "enrichment": null
+      },
+      {
+        "description": "A2 NILK3/59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "A2 WILK3/59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 74.44,
+      "tax": 0,
+      "total": null,
+      "itemCount": 5,
+      "sumOfItems": 69.45,
+      "subtotalMatch": false
+    }
+  }
+}

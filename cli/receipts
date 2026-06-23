@@ -1,0 +1,189 @@
+#!/usr/bin/env bash
+#
+# receipts — a tiny CLI for the Receipt Enricher API.
+# No Node required: just bash + curl (jq optional for pretty output).
+#
+#   API_URL    override the server (default: http://localhost:8080)
+#   TENANT_ID  tenant for requests (sent as X-Tenant-Id; default: server default)
+#   USER_ID    user   for requests (sent as X-User-Id;   default: server default)
+#
+# Identity: a receipt's id is the composite "<tenant>:<user>:<cacheId>", so once
+# you have an id (from upload) you can status/wait/view it with no identity set.
+# Identity matters on upload (which tenant/user owns the receipt) and on list
+# (whose receipts to show). Set TENANT_ID/USER_ID, or pass --tenant/--user to
+# upload. A tenant must be provisioned first (see `receipts tenant create`).
+#
+# Usage:
+#   receipts upload <image> [--wait] [--profile <id|name>] [--tenant <t>] [--user <u>]
+#                                      Upload a receipt photo (optionally wait for
+#                                      results; --profile applies a receipt profile
+#                                      after OCR, e.g. the seeded "usGrocery1")
+#   receipts status <id>               Show the JSON record for a receipt
+#   receipts list                      List recent receipts (for TENANT_ID/USER_ID)
+#   receipts wait <id>                 Poll until the receipt is done/failed
+#   receipts view <id>                 Print (and try to open) the web view URL
+#   receipts tenant create <id>        Provision a tenant account
+#   receipts tenant list               List provisioned tenants
+#   receipts health                    Check that the API + Redis are up
+#
+set -euo pipefail
+
+API_URL="${API_URL:-http://localhost:8080}"
+TENANT_ID="${TENANT_ID:-}"
+USER_ID="${USER_ID:-}"
+POLL_SECONDS="${POLL_SECONDS:-2}"
+POLL_TIMEOUT="${POLL_TIMEOUT:-180}"
+
+have() { command -v "$1" >/dev/null 2>&1; }
+pp()   { if have jq; then jq .; else cat; fi; }
+die()  { echo "error: $*" >&2; exit 1; }
+
+# Build the identity headers from TENANT_ID/USER_ID into the global array IDH.
+# Empty values are omitted, so the server falls back to its configured default.
+# Reference safely under `set -u` (macOS bash 3.2): "${IDH[@]+"${IDH[@]}"}".
+IDH=()
+build_id_headers() {
+  IDH=()
+  [ -n "${TENANT_ID:-}" ] && IDH+=(-H "X-Tenant-Id: ${TENANT_ID}")
+  [ -n "${USER_ID:-}" ] && IDH+=(-H "X-User-Id: ${USER_ID}")
+  # Must return 0: a trailing `&&` that short-circuits would otherwise make this
+  # function return non-zero and trip `set -e` in the caller (no identity set).
+  return 0
+}
+
+# Extract a top-level string field from a JSON blob (uses jq if available).
+json_field() {
+  local field="$1"
+  if have jq; then jq -r --arg f "$field" '.[$f] // empty'; else
+    grep -o "\"$field\"[[:space:]]*:[[:space:]]*\"[^\"]*\"" | head -n1 | sed 's/.*:[[:space:]]*"//; s/"$//'
+  fi
+}
+
+require_api() {
+  curl -fsS "$API_URL/health" >/dev/null 2>&1 || \
+    die "API not reachable at $API_URL (is the stack up? try 'receipts health')"
+}
+
+cmd_upload() {
+  local file="" wait="" profile=""
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --wait)        wait="--wait" ;;
+      --profile)     shift; profile="${1:-}"; [ -n "$profile" ] || die "usage: receipts upload <image> [--wait] [--profile <id|name>]" ;;
+      --profile=*)   profile="${1#--profile=}" ;;
+      --tenant)      shift; TENANT_ID="${1:-}"; [ -n "$TENANT_ID" ] || die "--tenant needs a value" ;;
+      --tenant=*)    TENANT_ID="${1#--tenant=}" ;;
+      --user)        shift; USER_ID="${1:-}"; [ -n "$USER_ID" ] || die "--user needs a value" ;;
+      --user=*)      USER_ID="${1#--user=}" ;;
+      -*)            die "unknown option: $1" ;;
+      *)             if [ -z "$file" ]; then file="$1"; else die "unexpected argument: $1"; fi ;;
+    esac
+    shift
+  done
+  [ -n "$file" ] || die "usage: receipts upload <image> [--wait] [--profile <id|name>] [--tenant <t>] [--user <u>]"
+  [ -f "$file" ] || die "file not found: $file"
+  build_id_headers
+  require_api
+  local resp
+  if [ -n "$profile" ]; then
+    resp="$(curl -fsS "${IDH[@]+"${IDH[@]}"}" -F "receipt=@${file}" -F "source=cli" -F "profileId=${profile}" "$API_URL/api/receipts")"
+  else
+    resp="$(curl -fsS "${IDH[@]+"${IDH[@]}"}" -F "receipt=@${file}" -F "source=cli" "$API_URL/api/receipts")"
+  fi
+  local id; id="$(printf '%s' "$resp" | json_field id)"
+  echo "$resp" | pp
+  [ -n "$id" ] || die "upload failed (no id returned)"
+  local presult; presult="$(printf '%s' "$resp" | json_field profileResultUrl)"
+  if [ "$wait" = "--wait" ]; then
+    echo "--- waiting for processing ---" >&2
+    # cmd_wait returns non-zero on a failed receipt; only surface the profile
+    # links once OCR + the profile have actually finished.
+    if cmd_wait "$id" && [ -n "$presult" ] && [ "$presult" != "null" ]; then
+      echo "profile result: $presult" >&2
+      echo "profile view:   $API_URL/receipts/$id/profileResults/${profile}/view" >&2
+    fi
+  fi
+}
+
+cmd_status() {
+  local id="${1:-}"; [ -n "$id" ] || die "usage: receipts status <id>"
+  require_api
+  # The composite id self-scopes, so no identity header is needed here.
+  curl -fsS "$API_URL/api/receipts/$id" | pp
+}
+
+cmd_list() {
+  build_id_headers
+  require_api
+  curl -fsS "${IDH[@]+"${IDH[@]}"}" "$API_URL/api/receipts" | pp
+}
+
+cmd_wait() {
+  local id="${1:-}"; [ -n "$id" ] || die "usage: receipts wait <id>"
+  require_api
+  local waited=0 status=""
+  while :; do
+    local resp; resp="$(curl -fsS "$API_URL/api/receipts/$id")"
+    status="$(printf '%s' "$resp" | json_field status)"
+    case "$status" in
+      done)
+        echo "done." >&2
+        printf '%s' "$resp" | pp
+        local view; view="$(printf '%s' "$resp" | json_field viewUrl)"
+        [ -n "$view" ] && echo "view: $view" >&2
+        return 0 ;;
+      failed)
+        echo "failed." >&2
+        printf '%s' "$resp" | pp
+        return 1 ;;
+      *)
+        if [ "$waited" -ge "$POLL_TIMEOUT" ]; then die "timed out after ${POLL_TIMEOUT}s (status: ${status:-unknown})"; fi
+        printf '  status: %-12s (%ds)\r' "${status:-?}" "$waited" >&2
+        sleep "$POLL_SECONDS"; waited=$((waited + POLL_SECONDS)) ;;
+    esac
+  done
+}
+
+cmd_view() {
+  local id="${1:-}"; [ -n "$id" ] || die "usage: receipts view <id>"
+  local url="$API_URL/receipts/$id/view"
+  echo "$url"
+  if   have open;     then open "$url" >/dev/null 2>&1 || true
+  elif have xdg-open; then xdg-open "$url" >/dev/null 2>&1 || true
+  fi
+}
+
+cmd_tenant() {
+  local sub="${1:-}"; shift || true
+  require_api
+  case "$sub" in
+    create)
+      local t="${1:-}"; [ -n "$t" ] || die "usage: receipts tenant create <id>"
+      curl -fsS -H "Content-Type: application/json" -d "{\"tenantId\":\"$t\"}" "$API_URL/api/tenants" | pp ;;
+    list|"")
+      curl -fsS "$API_URL/api/tenants" | pp ;;
+    *) die "unknown tenant subcommand: $sub (try: create | list)" ;;
+  esac
+}
+
+cmd_health() {
+  curl -fsS "$API_URL/health" | pp
+}
+
+main() {
+  local cmd="${1:-}"; shift || true
+  case "$cmd" in
+    upload)  cmd_upload "$@" ;;
+    status|get) cmd_status "${1:-}" ;;
+    list)    cmd_list ;;
+    wait)    cmd_wait "${1:-}" ;;
+    view)    cmd_view "${1:-}" ;;
+    tenant)  cmd_tenant "$@" ;;
+    health)  cmd_health ;;
+    ""|-h|--help|help)
+      awk 'NR==1{next} /^#/{sub(/^# ?/,""); print; next} {exit}' "$0" ;;
+    *) die "unknown command: $cmd (try: receipts help)" ;;
+  esac
+}
+
+main "$@"

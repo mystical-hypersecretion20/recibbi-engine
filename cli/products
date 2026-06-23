@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+#
+# products — a tiny CLI for the Receipt Enricher product layer (alongside `receipts`).
+# No Node required: just bash + curl (jq optional for pretty output).
+#
+#   API_URL  override the server (default: http://localhost:8080)
+#
+# Usage:
+#   products cache export <path.json>            Export the product cache to a JSON file
+#   products cache import <path.json> [--flush]  Import a product cache from a JSON file
+#                                                (--flush clears the existing cache first)
+#   products cache stats                         Show how many entries the cache holds
+#   products resolvers                           List product resolvers + the active one
+#   products health                              Check that the API + Redis are up
+#
+# The export/import pair lets you snapshot the shared product cache and restore
+# it later — e.g. seed a known cache before an acceptance run so SKU lookups are
+# served from cache instead of live Anthropic calls.
+set -euo pipefail
+
+API_URL="${API_URL:-http://localhost:8080}"
+
+have() { command -v "$1" >/dev/null 2>&1; }
+pp()   { if have jq; then jq .; else cat; fi; }
+die()  { echo "error: $*" >&2; exit 1; }
+
+require_api() {
+  curl -fsS "$API_URL/health" >/dev/null 2>&1 || \
+    die "API not reachable at $API_URL (is the stack up? try 'products health')"
+}
+
+cache_export() {
+  local path="${1:-}"; [ -n "$path" ] || die "usage: products cache export <path.json>"
+  require_api
+  local tmp; tmp="$(mktemp)"
+  curl -fsS "$API_URL/api/products/cache/export" -o "$tmp" || { rm -f "$tmp"; die "export request failed"; }
+  mv "$tmp" "$path"
+  local count="?"
+  if have jq; then count="$(jq -r '.count // (.entries|length) // "?"' "$path")"; fi
+  echo "exported ${count} cache entries to ${path}" >&2
+}
+
+cache_import() {
+  local path="" flush=""
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --flush) flush="?flush=1" ;;
+      -*)      die "unknown option: $1" ;;
+      *)       if [ -z "$path" ]; then path="$1"; else die "unexpected argument: $1"; fi ;;
+    esac
+    shift
+  done
+  [ -n "$path" ] || die "usage: products cache import <path.json> [--flush]"
+  [ -f "$path" ] || die "file not found: $path"
+  require_api
+  curl -fsS -X POST -H 'content-type: application/json' --data-binary @"$path" \
+    "$API_URL/api/products/cache/import${flush}" | pp
+}
+
+cmd_cache() {
+  local sub="${1:-}"; shift || true
+  case "$sub" in
+    export) cache_export "$@" ;;
+    import) cache_import "$@" ;;
+    stats)  require_api; curl -fsS "$API_URL/api/products/cache/stats" | pp ;;
+    ""|-h|--help) die "usage: products cache <export|import|stats> [...]" ;;
+    *)      die "unknown cache subcommand: $sub (try: products help)" ;;
+  esac
+}
+
+cmd_resolvers() { require_api; curl -fsS "$API_URL/api/productResolvers" | pp; }
+cmd_health()    { curl -fsS "$API_URL/health" | pp; }
+
+main() {
+  local cmd="${1:-}"; shift || true
+  case "$cmd" in
+    cache)      cmd_cache "$@" ;;
+    resolvers)  cmd_resolvers ;;
+    health)     cmd_health ;;
+    ""|-h|--help|help)
+      awk 'NR==1{next} /^#/{sub(/^# ?/,""); print; next} {exit}' "$0" ;;
+    *) die "unknown command: $cmd (try: products help)" ;;
+  esac
+}
+
+main "$@"

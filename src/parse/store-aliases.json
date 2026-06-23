@@ -1,0 +1,19 @@
+{
+  "_comment": "Maps a canonical store name to the lowercase aliases/substrings that should resolve to it. Used by src/parse/receiptParser.js to canonicalize store names from both the vision and OCR paths (e.g. 'Costco Wholesale' -> 'Costco'). Override the file location with STORE_ALIASES_PATH. Longer aliases are matched first.",
+  "aliases": {
+    "Costco": ["costco wholesale", "costco"],
+    "Sprouts": ["sprouts farmers market", "sprouts"],
+    "Publix": ["publix super market", "publix"],
+    "Walmart": ["walmart", "wal-mart"],
+    "Target": ["target"],
+    "Kroger": ["kroger"],
+    "Whole Foods": ["whole foods market", "whole foods"],
+    "Trader Joe's": ["trader joe's", "trader joe"],
+    "Safeway": ["safeway"],
+    "Aldi": ["aldi"],
+    "Wegmans": ["wegmans"],
+    "Sam's Club": ["sam's club", "sams club"],
+    "H-E-B": ["h-e-b", "heb"],
+    "Winn-Dixie": ["winn-dixie", "winn dixie"]
+  }
+}

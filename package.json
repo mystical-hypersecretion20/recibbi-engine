@@ -1,0 +1,40 @@
+{
+  "name": "receipt-enricher",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Turn a phone photo of a grocery receipt into structured, enriched line items.",
+  "license": "MIT",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js test/transformers/*.test.js",
+    "test:transformers": "node --test test/transformers/*.test.js",
+    "eval": "node test/transformers/eval.js",
+    "eval:tesseractGroceryUs": "node test/transformers/eval.js tesseractGroceryUs",
+    "test:live": "node --test test/live/*.live.test.js",
+    "test:live:vision": "node --test test/live/vision.live.test.js",
+    "test:live:samples": "node --test test/live/samples.live.test.js",
+    "test:live:tesseract": "node --test test/live/tesseract.live.test.js",
+    "test:live:stack": "node --test test/live/stack.live.test.js",
+    "start": "node src/server.js",
+    "server": "node src/server.js",
+    "worker": "node src/worker.js",
+    "bot": "node src/bot.js",
+    "dev:server": "node --watch src/server.js",
+    "dev:worker": "node --watch src/worker.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "11.10.0",
+    "bullmq": "^5.34.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "ioredis": "^5.4.1",
+    "multer": "^2.0.1",
+    "pino": "^9.5.0",
+    "telegraf": "^4.16.3",
+    "tesseract.js": "^5.1.1",
+    "tsx": "^4.19.2"
+  }
+}

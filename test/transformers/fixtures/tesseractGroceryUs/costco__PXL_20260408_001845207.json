@@ -1,0 +1,306 @@
+{
+  "transformer": "tesseractGroceryUs",
+  "name": "costco/PXL_20260408_001845207.jpg",
+  "note": "Real Tesseract parse of this sample (see analysis/). expected = current transformer output; regenerate with generate-fixtures.js.",
+  "input": {
+    "store": null,
+    "items": [
+      {
+        "description": "I EE 1165284 KS MEX CHEES",
+        "sku": "1165284",
+        "qty": null,
+        "unitPrice": null,
+        "price": 11.99,
+        "enrichment": null
+      },
+      {
+        "description": "Rd E 77063 GRAPE TOMATO",
+        "sku": "77063",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.99,
+        "enrichment": null
+      },
+      {
+        "description": "| 8 E 57664 BLUEBERRIES",
+        "sku": "57664",
+        "qty": null,
+        "unitPrice": null,
+        "price": 9.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 56366 RASPBERRIES",
+        "sku": "56366",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.49,
+        "enrichment": null
+      },
+      {
+        "description": "E 7950 4LB COSMIC",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 7950 4LB COSMIC",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "1936003 HUG PU 5T-6T",
+        "sku": "1936003",
+        "qty": null,
+        "unitPrice": null,
+        "price": 39.99,
+        "enrichment": null
+      },
+      {
+        "description": "~ E 1462714 KS ORG A2 PR",
+        "sku": "1462714",
+        "qty": null,
+        "unitPrice": null,
+        "price": 11.79,
+        "enrichment": null
+      },
+      {
+        "description": "EN 1462714 KS ORG A2 PR",
+        "sku": "1462714",
+        "qty": null,
+        "unitPrice": null,
+        "price": 11.79,
+        "enrichment": null
+      },
+      {
+        "description": "| E 9262015 KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "| TRAX",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 0,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 132.99,
+      "tax": null,
+      "total": null,
+      "itemCount": 11,
+      "sumOfItems": 128,
+      "subtotalMatch": false
+    }
+  },
+  "groundTruth": {
+    "store": {
+      "name": "Costco",
+      "date": null
+    },
+    "items": [
+      {
+        "description": "KS MEX CHEES",
+        "sku": "1165284",
+        "qty": null,
+        "unitPrice": null,
+        "price": 11.99,
+        "enrichment": null
+      },
+      {
+        "description": "GRAPE TOMATO",
+        "sku": "77053",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.99,
+        "enrichment": null
+      },
+      {
+        "description": "BLUEBERRIES",
+        "sku": "57554",
+        "qty": null,
+        "unitPrice": null,
+        "price": 9.99,
+        "enrichment": null
+      },
+      {
+        "description": "RASPBERRIES",
+        "sku": "56366",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.49,
+        "enrichment": null
+      },
+      {
+        "description": "4LB COSMIC",
+        "sku": "7950",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "4LB COSMIC",
+        "sku": "7950",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "HUG PU 5T-6T",
+        "sku": "1935003",
+        "qty": null,
+        "unitPrice": null,
+        "price": 39.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS ORG A2 PR",
+        "sku": "1462714",
+        "qty": null,
+        "unitPrice": null,
+        "price": 11.79,
+        "enrichment": null
+      },
+      {
+        "description": "KS ORG A2 PR",
+        "sku": "1462714",
+        "qty": null,
+        "unitPrice": null,
+        "price": 11.79,
+        "enrichment": null
+      },
+      {
+        "description": "KS WATER GAL",
+        "sku": "931484",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 132.99,
+      "tax": 0,
+      "total": 132.99,
+      "itemCount": 11,
+      "sumOfItems": 132.99,
+      "subtotalMatch": true
+    }
+  },
+  "expected": {
+    "store": {
+      "name": "Costco",
+      "date": null
+    },
+    "items": [
+      {
+        "description": "KS MEX CHEES",
+        "sku": "1165284",
+        "qty": null,
+        "unitPrice": null,
+        "price": 11.99,
+        "enrichment": null
+      },
+      {
+        "description": "GRAPE TOMATO",
+        "sku": "77063",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.99,
+        "enrichment": null
+      },
+      {
+        "description": "8 E BLUEBERRIES",
+        "sku": "57664",
+        "qty": null,
+        "unitPrice": null,
+        "price": 9.99,
+        "enrichment": null
+      },
+      {
+        "description": "RASPBERRIES",
+        "sku": "56366",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.49,
+        "enrichment": null
+      },
+      {
+        "description": "4LB COSMIC",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "4LB COSMIC",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.99,
+        "enrichment": null
+      },
+      {
+        "description": "HUG PU 5T-6T",
+        "sku": "1936003",
+        "qty": null,
+        "unitPrice": null,
+        "price": 39.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS ORG A2 PR",
+        "sku": "1462714",
+        "qty": null,
+        "unitPrice": null,
+        "price": 11.79,
+        "enrichment": null
+      },
+      {
+        "description": "KS ORG A2 PR",
+        "sku": "1462714",
+        "qty": null,
+        "unitPrice": null,
+        "price": 11.79,
+        "enrichment": null
+      },
+      {
+        "description": "KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 132.99,
+      "tax": null,
+      "total": null,
+      "itemCount": 10,
+      "sumOfItems": 128,
+      "subtotalMatch": false
+    }
+  }
+}

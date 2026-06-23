@@ -1,0 +1,194 @@
+{
+  "transformer": "tesseractGroceryUs",
+  "name": "costco/PXL_20260309_224537595.MP.jpg",
+  "note": "Real Tesseract parse of this sample (see analysis/). expected = current transformer output; regenerate with generate-fixtures.js.",
+  "input": {
+    "store": null,
+    "items": [
+      {
+        "description": "—\\—n—— © 9262015 KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 1262178 R2 MII_K3/59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 951484 KS WATER GAL",
+        "sku": "951484",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.99,
+        "enrichment": null
+      },
+      {
+        "description": "nt ate 148981: PUMA S0CK",
+        "sku": "148981",
+        "qty": null,
+        "unitPrice": null,
+        "price": 14.99,
+        "enrichment": null
+      },
+      {
+        "description": "aR 100215 KS GREEN TEA",
+        "sku": "100215",
+        "qty": null,
+        "unitPrice": null,
+        "price": 15.99,
+        "enrichment": null
+      },
+      {
+        "description": "E 1424237 KS [iR FD BTR",
+        "sku": "1424237",
+        "qty": null,
+        "unitPrice": null,
+        "price": 13.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 73.94,
+      "tax": 0.71,
+      "total": null,
+      "itemCount": 6,
+      "sumOfItems": 77.94,
+      "subtotalMatch": false
+    }
+  },
+  "groundTruth": {
+    "store": {
+      "name": "Costco",
+      "date": "2026-03-09"
+    },
+    "items": [
+      {
+        "description": "KS SPARK WAT",
+        "sku": "926201E",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "A2 MILK3/597",
+        "sku": "93148 4",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS WATER GAL",
+        "sku": "148398 12",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS PUMA SOCK",
+        "sku": "10021 2E",
+        "qty": null,
+        "unitPrice": null,
+        "price": 15.99,
+        "enrichment": null
+      },
+      {
+        "description": "/ 14B3812",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": -4,
+        "enrichment": null
+      },
+      {
+        "description": "KS GR FD BTR",
+        "sku": "000037655 39",
+        "qty": null,
+        "unitPrice": null,
+        "price": 13.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 73.94,
+      "tax": 0.71,
+      "total": 74.65,
+      "itemCount": 6,
+      "sumOfItems": 58.95,
+      "subtotalMatch": false
+    }
+  },
+  "expected": {
+    "store": {
+      "name": "Costco",
+      "date": null
+    },
+    "items": [
+      {
+        "description": "KS SPARK WAT",
+        "sku": "9262015",
+        "qty": null,
+        "unitPrice": null,
+        "price": 16.99,
+        "enrichment": null
+      },
+      {
+        "description": "R2 MII_K3/59Z",
+        "sku": "1262178",
+        "qty": null,
+        "unitPrice": null,
+        "price": 10.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS WATER GAL",
+        "sku": "951484",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.99,
+        "enrichment": null
+      },
+      {
+        "description": "PUMA S0CK",
+        "sku": "148981",
+        "qty": null,
+        "unitPrice": null,
+        "price": 14.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS GREEN TEA",
+        "sku": "100215",
+        "qty": null,
+        "unitPrice": null,
+        "price": 15.99,
+        "enrichment": null
+      },
+      {
+        "description": "KS IR FD BTR",
+        "sku": "1424237",
+        "qty": null,
+        "unitPrice": null,
+        "price": 13.99,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 73.94,
+      "tax": 0.71,
+      "total": null,
+      "itemCount": 6,
+      "sumOfItems": 77.94,
+      "subtotalMatch": false
+    }
+  }
+}

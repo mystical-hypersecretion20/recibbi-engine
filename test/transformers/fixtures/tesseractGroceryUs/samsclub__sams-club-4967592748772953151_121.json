@@ -1,0 +1,213 @@
+{
+  "transformer": "tesseractGroceryUs",
+  "name": "samsclub/sams-club-4967592748772953151_121.jpg",
+  "note": "Real Tesseract parse of this sample (see analysis/). expected = current transformer output; regenerate with generate-fixtures.js.",
+  "input": {
+    "store": {
+      "name": null,
+      "date": "12/15/25"
+    },
+    "items": [
+      {
+        "description": "0990065861 DOG CHOW",
+        "sku": "0990065861",
+        "qty": null,
+        "unitPrice": null,
+        "price": 26.78,
+        "enrichment": null
+      },
+      {
+        "description": "0990411830 DETERGENT",
+        "sku": "0990411830",
+        "qty": null,
+        "unitPrice": null,
+        "price": 19.98,
+        "enrichment": null
+      },
+      {
+        "description": "2 AT 1 FOR 8.98",
+        "sku": null,
+        "qty": null,
+        "unitPrice": null,
+        "price": 17.96,
+        "enrichment": null
+      },
+      {
+        "description": "0000558295 PEPPERS",
+        "sku": "0000558295",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.47,
+        "enrichment": null
+      },
+      {
+        "description": "0000059846 MULTI PEPPE",
+        "sku": "0000059846",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.96,
+        "enrichment": null
+      },
+      {
+        "description": "0980205980 CHICKEN BRS",
+        "sku": "0980205980",
+        "qty": null,
+        "unitPrice": null,
+        "price": 14.38,
+        "enrichment": null
+      },
+      {
+        "description": "0980205980 CHICKEN BRS",
+        "sku": "0980205980",
+        "qty": null,
+        "unitPrice": null,
+        "price": 17.28,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 108.81,
+      "tax": null,
+      "total": 113.02,
+      "itemCount": 7,
+      "sumOfItems": 108.81,
+      "subtotalMatch": true
+    }
+  },
+  "groundTruth": {
+    "store": {
+      "name": "Sam's Club",
+      "date": "2025-12-15"
+    },
+    "items": [
+      {
+        "description": "DOG CHOW",
+        "sku": "0990065861",
+        "qty": 1,
+        "unitPrice": 26.78,
+        "price": 26.78,
+        "enrichment": null
+      },
+      {
+        "description": "DETERGENT",
+        "sku": "0990411830",
+        "qty": 1,
+        "unitPrice": 19.98,
+        "price": 19.98,
+        "enrichment": null
+      },
+      {
+        "description": "MM DISH SOA",
+        "sku": "0990347376",
+        "qty": 2,
+        "unitPrice": 8.98,
+        "price": 17.96,
+        "enrichment": null
+      },
+      {
+        "description": "PEPPERS",
+        "sku": "0000558295",
+        "qty": 1,
+        "unitPrice": 5.47,
+        "price": 5.47,
+        "enrichment": null
+      },
+      {
+        "description": "MULTI PEPPE",
+        "sku": "0000059846",
+        "qty": 1,
+        "unitPrice": 6.96,
+        "price": 6.96,
+        "enrichment": null
+      },
+      {
+        "description": "CHICKEN BRS",
+        "sku": "0980205980",
+        "qty": 1,
+        "unitPrice": 14.38,
+        "price": 14.38,
+        "enrichment": null
+      },
+      {
+        "description": "CHICKEN BRS",
+        "sku": "0980205980",
+        "qty": 1,
+        "unitPrice": 17.28,
+        "price": 17.28,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 108.81,
+      "tax": 4.21,
+      "total": 113.02,
+      "itemCount": 7,
+      "sumOfItems": 108.81,
+      "subtotalMatch": true
+    }
+  },
+  "expected": {
+    "store": {
+      "name": "Sam's Club",
+      "date": "12/15/25"
+    },
+    "items": [
+      {
+        "description": "DOG CHOW",
+        "sku": "0990065861",
+        "qty": null,
+        "unitPrice": null,
+        "price": 26.78,
+        "enrichment": null
+      },
+      {
+        "description": "DETERGENT",
+        "sku": "0990411830",
+        "qty": null,
+        "unitPrice": null,
+        "price": 19.98,
+        "enrichment": null
+      },
+      {
+        "description": "PEPPERS",
+        "sku": "0000558295",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.47,
+        "enrichment": null
+      },
+      {
+        "description": "MULTI PEPPE",
+        "sku": "0000059846",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.96,
+        "enrichment": null
+      },
+      {
+        "description": "CHICKEN BRS",
+        "sku": "0980205980",
+        "qty": null,
+        "unitPrice": null,
+        "price": 14.38,
+        "enrichment": null
+      },
+      {
+        "description": "CHICKEN BRS",
+        "sku": "0980205980",
+        "qty": null,
+        "unitPrice": null,
+        "price": 17.28,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 108.81,
+      "tax": null,
+      "total": 113.02,
+      "itemCount": 6,
+      "sumOfItems": 90.85,
+      "subtotalMatch": false
+    }
+  }
+}

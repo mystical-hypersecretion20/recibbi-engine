@@ -1,0 +1,149 @@
+{
+  "transformer": "tesseractGroceryUs",
+  "name": "samsclub/sams-club-4967592748772953149_121.jpg",
+  "note": "Real Tesseract parse of this sample (see analysis/). expected = current transformer output; regenerate with generate-fixtures.js.",
+  "input": {
+    "store": {
+      "name": null,
+      "date": "01/06/26"
+    },
+    "items": [
+      {
+        "description": "0000473008 GRAPE TOMAT",
+        "sku": "0000473008",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.57,
+        "enrichment": null
+      },
+      {
+        "description": "0000033249 RASPBERRIES",
+        "sku": "0000033249",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.52,
+        "enrichment": null
+      },
+      {
+        "description": "0000061971 MINI CUCUMB",
+        "sku": "0000061971",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.96,
+        "enrichment": null
+      },
+      {
+        "description": "0000578576 1 GALLON WT",
+        "sku": "0000578576",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.48,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 22.53,
+      "tax": null,
+      "total": 22.53,
+      "itemCount": 4,
+      "sumOfItems": 22.53,
+      "subtotalMatch": true
+    }
+  },
+  "groundTruth": {
+    "store": {
+      "name": "Sam's Club",
+      "date": "2026-01-06"
+    },
+    "items": [
+      {
+        "description": "GRAPE TOMAT",
+        "sku": "0000473008",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.57,
+        "enrichment": null
+      },
+      {
+        "description": "RASPBERRIES",
+        "sku": "0000033249",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.52,
+        "enrichment": null
+      },
+      {
+        "description": "MINI CUCUMB",
+        "sku": "0000061971",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.96,
+        "enrichment": null
+      },
+      {
+        "description": "1 GALLON WT",
+        "sku": "0000578576",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.48,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 22.53,
+      "tax": 0,
+      "total": 22.53,
+      "itemCount": 4,
+      "sumOfItems": 22.53,
+      "subtotalMatch": true
+    }
+  },
+  "expected": {
+    "store": {
+      "name": "Sam's Club",
+      "date": "01/06/26"
+    },
+    "items": [
+      {
+        "description": "GRAPE TOMAT",
+        "sku": "0000473008",
+        "qty": null,
+        "unitPrice": null,
+        "price": 6.57,
+        "enrichment": null
+      },
+      {
+        "description": "RASPBERRIES",
+        "sku": "0000033249",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.52,
+        "enrichment": null
+      },
+      {
+        "description": "MINI CUCUMB",
+        "sku": "0000061971",
+        "qty": null,
+        "unitPrice": null,
+        "price": 4.96,
+        "enrichment": null
+      },
+      {
+        "description": "1 GALLON WT",
+        "sku": "0000578576",
+        "qty": null,
+        "unitPrice": null,
+        "price": 5.48,
+        "enrichment": null
+      }
+    ],
+    "totals": {
+      "subtotal": 22.53,
+      "tax": null,
+      "total": 22.53,
+      "itemCount": 4,
+      "sumOfItems": 22.53,
+      "subtotalMatch": true
+    }
+  }
+}
