@@ -13,12 +13,12 @@ with **Docker or Podman**.
 ## How it works
 
 ```
-                 ┌──────────────┐         ┌──────────────────────────────┐
-   Telegram ───► │              │         │            worker            │
+                 ┌──────────────┐          ┌──────────────────────────────┐
+   Telegram ───► │              │          │            worker            │
                  │   api (REST  │  BullMQ  │  OCR/vision → parse → Tavily │
    CLI / curl ─► │   + web view)│ ───────► │  enrich → summarize          │
                  │              │  (Redis) │                              │
-                 └──────┬───────┘         └───────────────┬──────────────┘
+                 └──────┬───────┘          └───────────────┬──────────────┘
                         │  durable receipt records (JSON + image)         │
                         └──────────────── shared volume ──────────────────┘
 ```
